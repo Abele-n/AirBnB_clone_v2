@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-script that starts a Flask web application
+Script that starts a Flask web application.
 
 listen on 0.0.0.0, port 5000
 To load all cities of a State:
@@ -9,20 +9,19 @@ To load all cities of a State:
 """
 
 from flask import Flask, render_template
-
 from models import storage
 from models.state import State
 
 
 app = Flask(__name__)
-'''The Flask application instance.'''
+"""Define the Flask application instance."""
 app.url_map.strict_slashes = False
 
 
 @app.route('/states')
 @app.route('/states/<id>')
 def states(id=None):
-    '''The states page.'''
+    """Define the states page."""
     states = None
     state = None
     all_states = list(storage.all(State).values())
@@ -49,7 +48,7 @@ def states(id=None):
 
 @app.teardown_appcontext
 def flask_teardown(exc):
-    '''The Flask app/request context end event listener.'''
+    """Define the Flask app/request context end event listener."""
     storage.close()
 
 
