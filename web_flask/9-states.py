@@ -21,7 +21,13 @@ app.url_map.strict_slashes = False
 @app.route('/states')
 @app.route('/states/<id>')
 def states(id=None):
-    """Define the states page."""
+    """Define the states page.
+
+    Args:
+        id(str): id of the state to display details to
+    Returns:
+        HTML content representing the states
+    """
     states = None
     state = None
     all_states = list(storage.all(State).values())
@@ -48,7 +54,12 @@ def states(id=None):
 
 @app.teardown_appcontext
 def flask_teardown(exc):
-    """Define the Flask app/request context end event listener."""
+    """
+    Define the Flask app/request context end event listener.
+
+    Args:
+        exc:Exception object
+    """
     storage.close()
 
 

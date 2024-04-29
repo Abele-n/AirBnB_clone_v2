@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-script that starts a Flask web application
+Script that starts a Flask web application.
 
 Routes:
     /states: display a HTML page: (inside the tag BODY)
@@ -20,19 +20,18 @@ Routes:
 """
 
 from flask import Flask, render_template
-
 from models import storage
 from models.state import State
 
 
 app = Flask(__name__)
-'''The Flask application instance.'''
+"""Define the Flask application instance."""
 app.url_map.strict_slashes = False
 
 
 @app.route('/cities_by_states')
 def cities_by_states():
-    '''The cities_by_states page.'''
+    """Define the cities_by_states page."""
     all_states = list(storage.all(State).values())
     all_states.sort(key=lambda x: x.name)
     for state in all_states:
@@ -45,7 +44,7 @@ def cities_by_states():
 
 @app.teardown_appcontext
 def flask_teardown(exc):
-    '''The Flask app/request context end event listener.'''
+    """Define the Flask app/request context end event listener.'''
     storage.close()
 
 
