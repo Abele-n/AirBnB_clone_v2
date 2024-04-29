@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""FileStorage class definition"""
+"""Define FileStorage class definition"""
 
 import json
 from models.base_model import BaseModel
@@ -14,18 +14,20 @@ import shlex
 
 class FileStorage:
     """
-    This class serializes instances to a JSON file and deserializes JSON file.
+    Serialize class instances to a JSON file and deserializes JSON file.
     to instances
 
     Attributes:
         __file_path: path to the JSON file
         __objects: objects will be stored
     """
+    
     __file_path = "file.json"
     __objects = {}
 
     def all(self, cls=None):
-        """Return a dictionary.
+        """
+        Return a dictionary.
 
         Return:
             returns a dictionary of __object

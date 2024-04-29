@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""module for database storage management."""
+"""Module for database storage management."""
 
 from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
@@ -15,7 +15,7 @@ from models.amenity import Amenity
 
 
 class DBStorage:
-    """create tables in environmental."""
+    """Create tables in environmental."""
     
     __engine = None
     __session = None
