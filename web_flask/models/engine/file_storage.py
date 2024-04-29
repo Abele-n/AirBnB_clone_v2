@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Define FileStorage class definition"""
+"""Define FileStorage class definition."""
 
 import json
 from models.base_model import BaseModel
@@ -14,8 +14,7 @@ import shlex
 
 class FileStorage:
     """
-    Serialize class instances to a JSON file and deserializes JSON file.
-    to instances
+    Serialize cls instances to JSON file, deserialize JSON file to instances.
 
     Attributes:
         __file_path: path to the JSON file
@@ -29,6 +28,8 @@ class FileStorage:
         """
         Return a dictionary.
 
+        Args:
+            cls (class, optional): Class type to filter objects. Defaults to None.
         Return:
             returns a dictionary of __object
         """
@@ -74,7 +75,13 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        """Delete an existing element."""
+        """
+        Delete an existing element.
+
+        Args:
+            obj (BaseModel, optional): Object to be deleted from storage.
+            Defaults to None.
+        """
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
